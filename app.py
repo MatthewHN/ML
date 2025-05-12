@@ -26,7 +26,7 @@ model, job_columns = load_and_train_model("Salary_Data - Copy2.csv")
 JOB_TITLES = [col.replace("Job Title_", "") for col in job_columns]
 
 # ─── UI ───────────────────────────────────────────────────────────────────────
-st.title("💰 Employee Salary Prediction")
+st.title("💰 Employee Salary Prediction by Matthew Horne")
 st.markdown("Select a job title & years of experience to see your predicted salary.")
 
 job = st.selectbox("Job Title", JOB_TITLES)
