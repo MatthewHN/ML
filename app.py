@@ -121,14 +121,17 @@ def run():
             job = st.selectbox("Job Title", job_titles)
             exp = st.slider("Years of Experience", min_value=0, max_value=40, value=2)
 
-            if st.button('Predict', use_container_width=True):
-                # Build input vector
+            if st.button("Predict", use_container_width=True):
+                # build one-row DataFrame for the model
                 row = {"const": 1, "Years of Experience": exp}
                 for col in job_columns:
                     row[col] = 1 if col == f"Job Title_{job}" else 0
                 X_pred = pd.DataFrame([row])
-                prediction_value = model.predict(X_pred)[0]
-                st.success(f"💵 Predicted Salary: ${prediction_value:,.0f}")
+
+                sqrt_pred = model.predict(X_pred)[0]
+                salary_pred = sqrt_pred ** 2
+
+                st.success(f"💵 Predicted Salary: ${salary_pred:,.0f}")
 
 # Run the app
 run()
