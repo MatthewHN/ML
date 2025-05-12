@@ -3,4 +3,5 @@ pandas~=2.2.3
 numpy~=1.26.4
 statsmodels~=0.14.4
 scipy
+streamlit_option_menu
 plotly~=6.0.1
