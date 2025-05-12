@@ -2,11 +2,15 @@ import streamlit as st
 import pandas as pd
 import pickle
 
-@st.cache(allow_output_mutation=True)
+st.set_page_config(page_title="Employee Salary App", page_icon="💰", layout="wide")
+
+
+@st.cache_data
 def load_model():
     with open("model.pkl", "rb") as f:
         saved = pickle.load(f)
     return saved["model"], saved["job_columns"]
+
 
 model, job_columns = load_model()
 
