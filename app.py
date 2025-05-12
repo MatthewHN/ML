@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-from sklearn.linear_model import LinearRegression
+from sklearn.ensemble import RandomForestRegressor
 
 st.set_page_config(page_title="Employee Salary App", page_icon="💰", layout="wide")
 
@@ -17,7 +17,7 @@ def load_and_train_model(data_path: str):
     X = df[["Years of Experience"] + job_cols]
     y = np.sqrt(df["Salary"].values)
     # 4) Train a simple linear model
-    model = LinearRegression().fit(X, y)
+    model = RandomForestRegressor(n_estimators=100, random_state=42).fit(X, y)
     return model, job_cols
 
 model, job_columns = load_and_train_model("Salary_Data - Copy2.csv")
